@@ -11,6 +11,8 @@ class GdkPixbuf < Formula
     sha256 "cafc68c2bfb6013f6f6f0fad456eb6454065346f38679b11c23a2fed75e714e6" => :el_capitan
   end
 
+  option "builtin-loaders=", "Build the specified loaders into gdk-pixbuf"
+
   depends_on "gobject-introspection" => :build
   depends_on "meson-internal" => :build
   depends_on "ninja" => :build
@@ -53,6 +55,9 @@ class GdkPixbuf < Formula
       -Dinstalled_tests=false
       -Dman=false
     ]
+
+    builtin_loaders = ARGV.value("builtin-loaders")
+    args << "-Dbuiltin_loaders=#{builtin_loaders}" if builtin_loaders
 
     ENV["DESTDIR"] = "/"
     mkdir "build" do

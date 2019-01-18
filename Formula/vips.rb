@@ -12,12 +12,10 @@ class Vips < Formula
 
   depends_on "gobject-introspection" => :build
   depends_on "pkg-config" => :build
-  depends_on "fftw"
   depends_on "fontconfig"
   depends_on "gettext"
   depends_on "giflib"
   depends_on "glib"
-  depends_on "graphicsmagick"
   depends_on "jpeg"
   depends_on "libexif"
   depends_on "libgsf"
@@ -25,19 +23,14 @@ class Vips < Formula
   depends_on "librsvg"
   depends_on "libtiff"
   depends_on "little-cms2"
-  depends_on "openexr"
-  depends_on "openslide"
   depends_on "orc"
   depends_on "pango"
-  depends_on "poppler"
   depends_on "webp"
 
   def install
     args = %W[
       --disable-dependency-tracking
       --prefix=#{prefix}
-      --with-magick
-      --with-magickpackage=GraphicsMagick
     ]
 
     system "./configure", *args
